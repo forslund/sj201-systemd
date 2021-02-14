@@ -1,0 +1,7 @@
+start-sj201 /usr/bin
+stop-sj201 /usr/bin
+flash-sj201 /usr/bin
+setup_* /usr/bin
+sj201.service /lib/systemd/system
+*.bin /usr/share/mycroft/firmware
+i2s_master_loader.ko /usr/share/mycroft/firmware

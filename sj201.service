@@ -1,0 +1,14 @@
+[Unit]
+Description=Setup audio environment for sj201
+After=systemd-modules-load.service
+Requires=systemd-modules-load.service
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/bin/start-sj201
+ExecStop=/user/bin/stop-sj201
+RemainAfterExit=True
+
+[Install]
+WantedBy=graphical.target

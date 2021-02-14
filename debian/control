@@ -1,0 +1,11 @@
+Source: sj201-startup
+Maintainer: Åke Forslund <ake.forslund@gmail.com>
+Build-Depends:
+Section: main
+Priority: optional
+Standards-Version: 0.1.0
+
+Package: sj201-startup
+Architecture: arm64
+Description: Systemd service for starting the SJ-201 board
+Depends: python3-smbus, python3-spidev

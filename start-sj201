@@ -1,0 +1,25 @@
+#! /usr/bin/env sh
+
+FIRMWARE_FOLDER=/usr/share/mycroft/firmware
+insmod "$FIRMWARE_FOLDER/i2s_master_loader.ko"
+
+setup_bclk
+setup_mclk
+
+# Run Alsa at startup so that alsamixer configures
+arecord -d 1 > /dev/null 2>&1
+aplay dummy > /dev/null 2>&1
+
+# Startup sj201
+XMOS_POWER=16
+XMOS_RESET=27
+gpio -g mode $XMOS_POWER out
+gpio -g mode $XMOS_RESET out
+sleep 0.1
+gpio -g write $XMOS_POWER 1
+gpio -g write $XMOS_RESET 1
+
+sleep 1
+flash-sj201 --direct "$FIRMWARE_FOLDER/app_xvf3510_int_spi_boot_v4_1_0.bin"
+sleep 1
+i2cdetect -y 1

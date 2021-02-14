@@ -1,0 +1,3 @@
+#/usr/bin/env sh
+
+systemctl disable sj201.service
